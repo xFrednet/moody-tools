@@ -4,3 +4,5 @@ extends Node
 var ingame_menu = null
 
 var world = null
+
+var player = null

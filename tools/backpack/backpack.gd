@@ -65,6 +65,9 @@ func add_item(new_item: Item) -> void:
 	else:
 		_drop_item(new_item)
 
+func remove_item(item: Item) -> void:
+	_items.erase(item)
+
 func _drop_item(item: Item) -> void:
 	if item.get_parent():
 		item.get_parent().remove_child(item)

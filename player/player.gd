@@ -2,7 +2,8 @@ extends KinematicBody2D
 
 export(int) var speed = 200
 
-#var velocity = Vector2()
+func _init() -> void:
+	GameData.player = self
 
 func _ready() -> void:
 	

@@ -8,3 +8,6 @@ var max_age = 100
 
 func _ready() -> void:
 	pass
+
+func give_item_by_id(id: String):
+	print("I got " + id)
