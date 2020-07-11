@@ -36,6 +36,12 @@ func _process(delta: float) -> void:
 func _display_status(text: String) -> void:
 	GameData.ingame_menu.find_node("tool_status_display").find_node("backpack").set_status(text)
 
+func get_slot_count() -> int:
+	return _slots
+
+func get_items() -> Array:
+	return _items
+
 func add_item(new_item: Item) -> void:
 	var stack = null
 	
@@ -50,8 +56,7 @@ func add_item(new_item: Item) -> void:
 			item.add(new_item.get_count())
 			return
 	
-	
-	if (_items.size() < self._slots - 1):
+	if (_items.size() < self._slots):
 		_display_status(
 				NEW_ITEM_TEXT[randi() % NEW_ITEM_TEXT.size()] + 
 				"\n + " + str(new_item.get_count()) + " " + ItemInfo.get_item_name(new_item.get_id()) +
@@ -61,6 +66,9 @@ func add_item(new_item: Item) -> void:
 		_drop_item(new_item)
 
 func _drop_item(item: Item) -> void:
+	if item.get_parent():
+		item.get_parent().remove_child(item)
+				
 	item.set_visible(true)
 	item.set_position(get_global_transform().get_origin())
 	GameData.world.add_entity(item)
