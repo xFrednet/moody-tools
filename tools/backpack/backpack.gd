@@ -31,7 +31,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if (Input.is_action_just_pressed("debug")):
-		add_item(Item.new("hello", 2))
+		add_item(Item.new("hello" + str(_items.size()), 2))
 
 func _display_status(text: String) -> void:
 	GameData.ingame_menu.find_node("tool_status_display").find_node("backpack").set_status(text)
@@ -63,4 +63,6 @@ func add_item(new_item: Item) -> void:
 func _drop_item(item: Item) -> void:
 	item.set_visible(true)
 	item.set_position(get_global_transform().get_origin())
+	GameData.world.add_entity(item)
+	
 	_display_status("I dropped a thingy")
