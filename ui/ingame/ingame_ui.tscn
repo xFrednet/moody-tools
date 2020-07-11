@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui/ingame/ingame_ui.gd" type="Script" id=1]
+[ext_resource path="res://ui/ingame/tool_status_display.tscn" type="PackedScene" id=2]
+
+[node name="control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.583969
+margin_right = 0.583984
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Moody Tools"
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -80.0
+margin_top = -14.0
+text = "Other thingy"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tool_status_display" type="VBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -404.0
+margin_right = 256.0
+grow_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="helmet" parent="tool_status_display" instance=ExtResource( 2 )]
+anchor_top = 0.0
+anchor_bottom = 0.0
+margin_top = 0.0
+margin_bottom = 64.0
+
+[node name="shirt" parent="tool_status_display" instance=ExtResource( 2 )]
+anchor_top = 0.0
+anchor_bottom = 0.0
+margin_top = 68.0
+margin_bottom = 132.0
+
+[node name="pants" parent="tool_status_display" instance=ExtResource( 2 )]
+anchor_top = 0.0
+anchor_bottom = 0.0
+margin_top = 136.0
+margin_bottom = 200.0
+
+[node name="boots" parent="tool_status_display" instance=ExtResource( 2 )]
+anchor_top = 0.0
+anchor_bottom = 0.0
+margin_top = 204.0
+margin_bottom = 268.0
+
+[node name="weapon" parent="tool_status_display" instance=ExtResource( 2 )]
+anchor_top = 0.0
+anchor_bottom = 0.0
+margin_top = 272.0
+margin_bottom = 336.0
+
+[node name="backpack" parent="tool_status_display" instance=ExtResource( 2 )]
+anchor_top = 0.0
+anchor_bottom = 0.0
+margin_top = 340.0
+margin_bottom = 404.0
