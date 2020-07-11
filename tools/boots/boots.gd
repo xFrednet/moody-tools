@@ -5,6 +5,9 @@ class_name Boots
 func _ready() -> void:
 	pass
 
+func _display_status(text: String) -> void:
+	GameData.ingame_menu.find_node("tool_status_display").find_node("boots").set_status(text)
+
 func get_movement(delta: float) -> Vector2:
 	return get_movement_request()
 

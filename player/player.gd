@@ -8,6 +8,7 @@ func _ready() -> void:
 	
 	var boots = DunkBoots.new()
 	$equipment.set_boots(boots)
+	$equipment.set_backpack(Backpack.new())
 	
 	pass
 

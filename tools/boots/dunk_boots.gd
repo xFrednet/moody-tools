@@ -8,11 +8,20 @@ const AGE_MULTIPLIER = 3000
 const MIN_ALC_LEVEL = 20
 const DRUNK_MOTION_SPEED = 100
 
-var alc_level = 50
+const random_quote = [
+	"I drink to make other boots more interesting *cheers*",
+	"I can stop when ever I want! Let's have a drink on that my friend",
+	"I drink to make my owner more interesting",
+	"What do we want to drink, well all of the things!!!!",
+	"Voddi, is my life water"
+]
+
+var alc_level = 50.0
 var delta = 0.0
-var drunk_motion = Vector2()
+var drunk_motion = Vector2(1.0, 0)
 
 func _ready() -> void:
+	_display_status("Hello my friend!\nFriends don't let friends drink alone, so drink something with me!")
 	pass
 
 func get_movement(delta: float) -> Vector2:
@@ -37,7 +46,6 @@ func _process(delta: float) -> void:
 	drunk_motion = drunk_motion.normalized()
 
 func get_speed(delta: float) -> float:
-	
 	var alc_sensation = (alc_level - MIN_ALC_LEVEL) / 100.0
 	return (BASE_SPEED +
 		ALC_MULTIPLIER * (alc_sensation * alc_sensation) +
