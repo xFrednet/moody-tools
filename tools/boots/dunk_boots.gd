@@ -10,7 +10,7 @@ const DRUNK_MOTION_SPEED = 100
 
 const random_quote = [
 	"I drink to make other boots more interesting *cheers*",
-	"I can stop when ever I wan't! Let's have a drink on that my friend",
+	"I can stop when ever I want! Let's have a drink on that my friend",
 	"I drink to make my owner more interesting",
 	"What do we want to drink, well all of the things!!!!",
 	"Voddi, is my life water"

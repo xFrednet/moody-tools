@@ -5,7 +5,7 @@ var pants : Tool = null
 var shirt : Tool = null
 var helmet : Tool = null
 
-var backpack : Tool = null
+var backpack : Backpack = null
 var sword : Tool = null
 
 func _ready() -> void:
@@ -58,12 +58,12 @@ func get_helmet() -> Tool:
 #
 # backpack
 #
-func set_backpack(backpack: Tool) -> void:
+func set_backpack(backpack: Backpack) -> void:
 	remove_child(self.helmet)
 	self.backpack = backpack
 	add_child(backpack)
 
-func get_backpack() -> Tool:
+func get_backpack() -> Backpack:
 	return backpack
 
 #
