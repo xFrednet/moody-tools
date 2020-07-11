@@ -8,9 +8,26 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Tool",
+"class": "Boots",
+"language": "GDScript",
+"path": "res://tools/boots/boots.gd"
+}, {
+"base": "Boots",
+"class": "DunkBoots",
+"language": "GDScript",
+"path": "res://tools/boots/dunk_boots.gd"
+}, {
+"base": "Node2D",
+"class": "Tool",
+"language": "GDScript",
+"path": "res://tools/tool.gd"
+} ]
 _global_script_class_icons={
-
+"Boots": "",
+"DunkBoots": "",
+"Tool": ""
 }
 
 [application]
