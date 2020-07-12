@@ -23,7 +23,7 @@ const COLLECTION_TEXT = [
 ]
 
 var _items: Array = Array()
-var _slots: int = 20
+var _slots: int = 12
 
 func _ready() -> void:
 	_display_status("Hey from root")
@@ -76,7 +76,7 @@ func add_item(new_item: Item) -> void:
 func remove_item(item: Item) -> void:
 	_items.erase(item)
 
-func _drop_item(item: Item) -> void:
+func _drop_item(item: Item, display_message: bool = true) -> void:
 	if item.get_parent():
 		item.get_parent().remove_child(item)
 				
@@ -84,7 +84,8 @@ func _drop_item(item: Item) -> void:
 	item.set_position(get_global_transform().get_origin())
 	GameData.world.add_entity(item)
 	
-	_display_status("I dropped a thingy")
+	if (display_message):
+		_display_status("I dropped a thingy")
 
 func update_mood_display() -> void:
 	GameData.ingame_menu.find_node("tool_status_display").find_node("backpack").set_mood(mood)
