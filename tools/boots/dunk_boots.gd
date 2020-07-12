@@ -30,6 +30,13 @@ const ALC_LEVEL_CHANGE = [
 	["I'm le dunk", "Alc, alc, alc is awesome", "More alc more fun"]
 ]
 
+const GOT_WATER = [
+	"Dude, that is water, it has 0% alc",
+	"I'm not a kid, give me somthing real to drink",
+	"I'm not that drunk",
+	"Look at you, trying to give me water"
+]
+
 const random_quote = [
 	"I drink to make other boots more interesting *cheers*",
 	"I can stop when ever I want! Let's have a drink on that my friend",
@@ -71,10 +78,18 @@ func give_item_by_id(id: String):
 		_display_random_status(GOT_ALCOKOL)
 		_change_mood(+25.0 + 15.0 * (1.0 - randf() * randf()))
 		_change_alc(+15.0 + 15.0 * randf() * randf())
+	elif (id == ItemInfo.WINE_BOTTLE_ID):
+		_display_random_status(GOT_ALCOKOL)
+		_change_mood(+10.0 + 15.0 * (1.0 - randf() * randf()))
+		_change_alc(+15.0 + 5.0 * randf() * randf())
+	elif (id == ItemInfo.WATER_BOTTLE_ID):
+		_display_random_status(GOT_WATER)
+		_change_mood(-15.0 * (randf() * randf()))
+		_change_alc(-15.0 + 5.0 * randf() * 4)
 	else:
 		var alc_sensation = (alc_level - MIN_ALC_LEVEL) / 100.0
 		_display_random_status(UNUSABLE_ITEM)
-		_change_mood(-25.0 * randf() * randf() + 25.0 * (1 - (alc_sensation * alc_sensation)))
+		_change_mood(min(-10, (-25.0 * randf() * randf())) + -10.0 * (1 - (alc_sensation * alc_sensation)))
 
 func _process(delta: float) -> void:
 	self.delta += delta
@@ -82,6 +97,8 @@ func _process(delta: float) -> void:
 	_change_alc(-1 * delta)
 	
 	if (alc_level < 10):
+		if (prev_alc_level < 1):
+			_display_status("I NEED A DRINK TO KEEP WALKING")
 		if (prev_alc_level > 10):
 			_display_random_status(ALC_LEVEL_CHANGE[0])
 		_change_mood(-5 * delta)
@@ -115,7 +132,7 @@ func _gen_drunk_motion() -> void:
 	match drunk_level:
 		0:
 			var rot = sin(self.delta * 75)
-			drunk_motion = Vector2(50 * rot, 0)
+			drunk_motion = Vector2(75 * rot, 0)
 		1:
 			var rot = sin(self.delta * 75)
 			drunk_motion = Vector2(10 * rot, 0)
@@ -133,7 +150,7 @@ func _gen_drunk_motion() -> void:
 
 func get_speed(delta: float) -> float:
 	var alc_sensation = (alc_level - MIN_ALC_LEVEL) / 100.0
-	return (BASE_SPEED +
+	return (BASE_SPEED * (alc_level / 100.0) +
 		ALC_MULTIPLIER * (alc_sensation * alc_sensation) +
 		MOOD_MULTIPLIER * (get_mood() / 100)) * delta
 

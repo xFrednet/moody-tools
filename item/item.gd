@@ -61,6 +61,10 @@ func _input(event: InputEvent) -> void:
 		if (get_parent() is Control):
 			popup.set_position(get_global_mouse_position())
 			popup.popup()
+	
+	if (mouse.get_button_index() == BUTTON_LEFT && mouse.is_pressed()):
+		if (get_parent() is Node2D):
+			GameData.player.get_node("equipment").get_backpack().pickup_item(self)
 
 func _mouse_entered() -> void:
 	mouse_inside = true
