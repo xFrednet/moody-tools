@@ -23,7 +23,7 @@ const COLLECTION_TEXT = [
 ]
 
 var _items: Array = Array()
-var _slots: int = 10
+var _slots: int = 20
 
 func _ready() -> void:
 	_display_status("Hey from root")
@@ -42,8 +42,12 @@ func get_slot_count() -> int:
 func get_items() -> Array:
 	return _items
 
+func pickup_item(new_item: Item) -> void:
+	add_item(new_item)
+
 func add_item(new_item: Item) -> void:
 	var stack = null
+	var first_null: int = -1
 	
 	new_item.set_visible(false)
 	
@@ -55,8 +59,12 @@ func add_item(new_item: Item) -> void:
 				"\n + " + str(new_item.get_count()) + " " + ItemInfo.get_item_name(new_item.get_id()))
 			item.add(new_item.get_count())
 			return
+		elif (item == null && first_null == -1):
+			first_null = index
 	
-	if (_items.size() < self._slots):
+	if (first_null != -1):
+		_items[first_null] = new_item
+	elif (_items.size() < self._slots):
 		_display_status(
 				NEW_ITEM_TEXT[randi() % NEW_ITEM_TEXT.size()] + 
 				"\n + " + str(new_item.get_count()) + " " + ItemInfo.get_item_name(new_item.get_id()) +
@@ -77,3 +85,6 @@ func _drop_item(item: Item) -> void:
 	GameData.world.add_entity(item)
 	
 	_display_status("I dropped a thingy")
+
+func update_mood_display() -> void:
+	GameData.ingame_menu.find_node("tool_status_display").find_node("backpack").set_mood(mood)

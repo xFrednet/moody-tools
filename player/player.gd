@@ -7,9 +7,8 @@ func _init() -> void:
 
 func _ready() -> void:
 	
-	var boots = DunkBoots.new()
-	$equipment.set_boots(boots)
-	$equipment.set_backpack(Backpack.new())
+	$equipment.set_boots(DunkBoots.new())
+	$equipment.set_backpack(HungryBackpack.new())
 	
 	pass
 

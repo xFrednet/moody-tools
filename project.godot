@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://tools/boots/dunk_boots.gd"
 }, {
+"base": "Backpack",
+"class": "HungryBackpack",
+"language": "GDScript",
+"path": "res://tools/backpack/hungry_backpack.gd"
+}, {
 "base": "TextureRect",
 "class": "Item",
 "language": "GDScript",
@@ -38,6 +43,7 @@ _global_script_class_icons={
 "Backpack": "",
 "Boots": "",
 "DunkBoots": "",
+"HungryBackpack": "",
 "Item": "",
 "Tool": ""
 }
