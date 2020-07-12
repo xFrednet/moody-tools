@@ -2,9 +2,9 @@ extends Boots
 
 class_name DunkBoots
 
-const BASE_SPEED = 6000
-const ALC_MULTIPLIER = 2000
-const AGE_MULTIPLIER = 3000
+const BASE_SPEED = 2000
+const ALC_MULTIPLIER = 4000
+const MOOD_MULTIPLIER = 8000
 const MIN_ALC_LEVEL = 20
 const DRUNK_MOTION_SPEED = 1500
 
@@ -53,7 +53,7 @@ func get_movement(delta: float) -> Vector2:
 	
 	match drunk_level:
 		0, 1:
-			return (input_motion * speed) + (drunk_motion * DRUNK_MOTION_SPEED * delta)
+			return (input_motion * speed) + (drunk_motion * DRUNK_MOTION_SPEED * delta * 0.5)
 		2:
 			var rot = sin(self.delta * 10) * randf() * 0.5
 			return (input_motion.rotated(rot) * speed) + (drunk_motion * DRUNK_MOTION_SPEED * delta * 0.5)
@@ -115,10 +115,10 @@ func _gen_drunk_motion() -> void:
 	match drunk_level:
 		0:
 			var rot = sin(self.delta * 75)
-			drunk_motion = Vector2(500 * rot, 0)
+			drunk_motion = Vector2(50 * rot, 0)
 		1:
 			var rot = sin(self.delta * 75)
-			drunk_motion = Vector2(100 * rot, 0)
+			drunk_motion = Vector2(10 * rot, 0)
 		2:
 			drunk_motion = Vector2()
 		3, 4:
@@ -135,7 +135,7 @@ func get_speed(delta: float) -> float:
 	var alc_sensation = (alc_level - MIN_ALC_LEVEL) / 100.0
 	return (BASE_SPEED +
 		ALC_MULTIPLIER * (alc_sensation * alc_sensation) +
-		AGE_MULTIPLIER * ((max_age - age) / max_age)) * delta
+		MOOD_MULTIPLIER * (get_mood() / 100)) * delta
 
 func _change_alc(change: float) -> void:
 	alc_level = clamp(alc_level + change, 0.0, 100.0)
