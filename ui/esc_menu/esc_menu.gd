@@ -17,7 +17,6 @@ func _process(delta: float) -> void:
 
 func continue_game():
 	set_visible(false)
-	set_size(Vector2(1,1))
 	get_tree().paused = false
 	emit_signal("continue_game")
 
