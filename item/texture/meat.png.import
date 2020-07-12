@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PRPG_tileset_path.png-3c39850572ab9e7c2c0cbc85f726ecea.stex"
+path="res://.import/meat.png-29c4d5ccd276d4902abb134129d8c660.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilemap/ground/PRPG_tileset_path.png"
-dest_files=[ "res://.import/PRPG_tileset_path.png-3c39850572ab9e7c2c0cbc85f726ecea.stex" ]
+source_file="res://item/texture/meat.png"
+dest_files=[ "res://.import/meat.png-29c4d5ccd276d4902abb134129d8c660.stex" ]
 
 [params]
 
