@@ -1,6 +1,9 @@
 extends Control
 
+export var texture: Texture = null
+
 func _ready() -> void:
+	$texture.set_texture(texture)
 	set_status("Hello World")
 	set_mood(75)
 	pass
