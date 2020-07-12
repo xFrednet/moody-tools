@@ -31,10 +31,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -132.0
+margin_right = 340.0
+color = Color( 0.254902, 0.294118, 0.596078, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="tool_status_display" type="VBoxContainer" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -404.0
+margin_top = -132.0
 margin_right = 256.0
 grow_vertical = 0
 __meta__ = {
@@ -42,18 +52,21 @@ __meta__ = {
 }
 
 [node name="helmet" parent="tool_status_display" instance=ExtResource( 2 )]
+visible = false
 anchor_top = 0.0
 anchor_bottom = 0.0
 margin_top = 0.0
 margin_bottom = 64.0
 
 [node name="shirt" parent="tool_status_display" instance=ExtResource( 2 )]
+visible = false
 anchor_top = 0.0
 anchor_bottom = 0.0
-margin_top = 68.0
-margin_bottom = 132.0
+margin_top = 0.0
+margin_bottom = 64.0
 
 [node name="pants" parent="tool_status_display" instance=ExtResource( 2 )]
+visible = false
 anchor_top = 0.0
 anchor_bottom = 0.0
 margin_top = 136.0
@@ -62,10 +75,11 @@ margin_bottom = 200.0
 [node name="boots" parent="tool_status_display" instance=ExtResource( 2 )]
 anchor_top = 0.0
 anchor_bottom = 0.0
-margin_top = 204.0
-margin_bottom = 268.0
+margin_top = 0.0
+margin_bottom = 64.0
 
 [node name="weapon" parent="tool_status_display" instance=ExtResource( 2 )]
+visible = false
 anchor_top = 0.0
 anchor_bottom = 0.0
 margin_top = 272.0
@@ -74,8 +88,8 @@ margin_bottom = 336.0
 [node name="backpack" parent="tool_status_display" instance=ExtResource( 2 )]
 anchor_top = 0.0
 anchor_bottom = 0.0
-margin_top = 340.0
-margin_bottom = 404.0
+margin_top = 68.0
+margin_bottom = 132.0
 
 [node name="backpack_ui" parent="." instance=ExtResource( 3 )]
 anchor_left = 0.5
