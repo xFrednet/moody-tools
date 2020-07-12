@@ -1,19 +1,31 @@
 extends Node
 
-const WOOD_ID = "i:wood"
-const STONE_ID = "i:stone"
 const ALCOHOL_ID = "i:alcohol"
+const APPLE_ID = "i:apple"
+const MEAT_ID = "i:meat"
+const STONE_ID = "i:stone"
+const WATER_BOTTLE_ID = "i:water_bottle"
+const WINE_BOTTLE_ID = "i:wine_bottle"
+const WOOD_ID = "i:wood"
 
 const ITEM_NAMES = {
-	"i:wood": "Wood",
+	"i:alcohol": "Alcohol",
+	"i:apple": "Apple",
+	"i:meat": "Meat",
 	"i:stone": "Stone",
-	"i:alcohol": "Alcohol"
+	"i:water_bottle": "Water_bottle",
+	"i:wine_bottle": "Wine_bottle",
+	"i:wood": "Wood"
 }
 
 var item_textures = {
-	"i:wood": load("res://item/texture/wood.png"),
-	"i:stone": load("res://item/texture/stone.png"),
-	"i:alcohol": load("res://item/texture/alcohol.png"),
+	"i:alcohol":		load("res://item/texture/alcohol.png"),
+	"i:apple":			load("res://item/texture/apple.png"),
+	"i:meat":			load("res://item/texture/meat.png"),
+	"i:stone":			load("res://item/texture/stone.png"),
+	"i:water_bottle":	load("res://item/texture/water_bottle.png"),
+	"i:wine_bottle":	load("res://item/texture/wine_bottle.png"),
+	"i:wood":			load("res://item/texture/wood.png")
 }
 
 var null_texture = load("res://item/texture/null.png")
