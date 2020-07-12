@@ -10,8 +10,8 @@ const INTRO_TEXT = [
 	"So let's get to it. You can find a pice of scrap in each cardinal direction, they should be reachable by following the paths.",
 	"",
 	"Wait before you start, we have a slight problem... Most of our equipment got destroyed. You will get our special tools:",
-	"Karl: These boots control your movement, but I have to warn you. He might have a slight alcohol addiction. Just keep him happy and sover enough to walk and you should be finde.",
-	"Frank: The hungry backpack, he is a trusty companian, if you keep him well fed.",
+	"These boots control your movement, but I have to warn you. He might have a slight alcohol addiction. Just keep him happy and sover enough to walk and you should be finde.",
+	"The hungry backpack, he is a trusty companian, if you keep him well fed.",
 	"Now you should start your adventure. Come to me, when you have colleced the four scrab pieces"
 ]
 

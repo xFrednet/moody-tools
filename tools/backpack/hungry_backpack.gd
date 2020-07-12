@@ -24,6 +24,7 @@ const DONT_PICKUP_ITEM_MESSAGE = [
 var _since_last_feed: float = 0.0
 var _hungry_state: int = 0
 var _pickup_blacklist: Array = []
+var _mood_modus = 4
 
 func _ready() -> void:
 	pass
@@ -41,7 +42,7 @@ func give_item_by_id(item_id: String):
 		ItemInfo.WATER_BOTTLE_ID:
 			_display_status("It's just water -.-")
 			_change_mood(5.0)
-			_since_last_feed = 0.0
+			_since_last_feed += 5.0
 		ItemInfo.FISH_ID:
 			_display_status("Uhh un fish, thank you, it will keep me fed")
 			_change_mood(15.0)
@@ -62,27 +63,27 @@ func _process(delta: float) -> void:
 	_since_last_feed += delta
 	
 	# Food status
-	if _since_last_feed < 30:
+	if _since_last_feed < 10:
 		_hungry_state = 0
 		_change_mood(0.5 * delta)
-	elif _since_last_feed < 60:
+	elif _since_last_feed < 30:
 		if (_hungry_state == 0):
 			_display_hungry_stage_message(1)
 		
 		_hungry_state = 1
-		_change_mood(0.0 * delta)
-	elif _since_last_feed < 90:
+		_change_mood(-1.0 * delta)
+	elif _since_last_feed < 45:
 		if (_hungry_state == 1):
 			_display_hungry_stage_message(2)
 		
 		_hungry_state = 2
-		_change_mood(-1.0 * delta)
+		_change_mood(-2.0 * delta)
 	else:
 		if (_hungry_state == 2):
 			_display_hungry_stage_message(3)
 		
 		_hungry_state = 3
-		_change_mood(-3.0 * delta)
+		_change_mood(-5.0 * delta)
 
 func _display_hungry_stage_message(stage: int) -> void:
 	var messages = HUNGRY_STATE_CHANGE_MESSAGES[stage]
@@ -112,29 +113,35 @@ func _change_mood(change: float):
 	._change_mood(change)
 	
 	var mood = get_mood()
-	if (mood > 90.0):
-		if (last_mood < 75.0):
-			_change_slots(20)
-			_pickup_blacklist.clear()
-	elif (mood > 75.0):
-		if (last_mood > 90.0 || last_mood < 50.0):
-			_change_slots(12)
-		
-		if (last_mood < 50.0):
-			_pickup_blacklist = _pickup_blacklist.slice(0, _pickup_blacklist.size(), 2)
-			
-	elif (mood > 50.0):
-		if (last_mood > 75.0 || last_mood < 25.0):
-			_change_slots(6)
-			_drop_random_stack()
-			
-		if (last_mood < 25.0):
-			_pickup_blacklist = _pickup_blacklist.slice(0, _pickup_blacklist.size(), 3)
-			
-	elif (mood > 25.0):
-		if (last_mood > 50.0):
+	
+	if (mood < 25.0):
+		if (_mood_modus != 0):
+			_mood_modus = 0
 			_change_slots(3)
 			_drop_random_stack()
+			
+	elif (mood < 50.0):
+		if (_mood_modus == 2):
+			_pickup_blacklist = _pickup_blacklist.slice(0, _pickup_blacklist.size(), 3)
+		
+		if (_mood_modus != 1):
+			_mood_modus = 1
+			_change_slots(4)
+			_drop_random_stack()
+			
+	elif (mood < 75.0):
+		if (_mood_modus == 4):
+			_pickup_blacklist = _pickup_blacklist.slice(0, _pickup_blacklist.size(), 2)
+		
+		if (_mood_modus != 3):
+			_mood_modus = 3
+			_change_slots(6)
+			
+	elif (mood < 90.0):
+		if (_mood_modus != 4):
+			_mood_modus = 4
+			_change_slots(7)
+			_pickup_blacklist.clear()
 	
 func _change_slots(new_slot_count: int) -> void:
 	_display_change_slot_count_message(1 if ((_slots - new_slot_count) > 1) else 0)
@@ -144,6 +151,8 @@ func _change_slots(new_slot_count: int) -> void:
 	var drop_count = min(0, _items.size() - _slots)
 	for index in range(drop_count):
 		_drop_random_stack()
+	
+	GameData.ingame_menu.get_node("backpack_ui").gen_slots()
 
 func _display_change_slot_count_message(change_type: int) -> void:
 	var messages = SLOT_COUNT_CHANGE_MESSAGE[change_type]
@@ -158,4 +167,4 @@ func _drop_random_stack() -> void:
 	var item = _items[index]
 	
 	.remove_item(item)
-	._drop_item(item)
+	._drop_item(item, true)

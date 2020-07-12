@@ -62,13 +62,13 @@ func get_movement(delta: float) -> Vector2:
 		0, 1:
 			return (input_motion * speed) + (drunk_motion * DRUNK_MOTION_SPEED * delta * 0.5)
 		2:
-			var rot = sin(self.delta * 10) * randf() * 0.5
-			return (input_motion.rotated(rot) * speed) + (drunk_motion * DRUNK_MOTION_SPEED * delta * 0.5)
+			var rot = sin(self.delta * 10) * randf() * 1
+			return (input_motion.rotated(rot) * speed) + (drunk_motion * DRUNK_MOTION_SPEED * delta * 0.75)
 		3:
-			var rot = sin(self.delta * 10) * randf() * 1.5
+			var rot = sin(self.delta * 10) * randf() * 2.5
 			return (input_motion.rotated(rot) * speed) + (drunk_motion * DRUNK_MOTION_SPEED * delta)
 		4:
-			var rot = sin(self.delta * 10) * randf() * 2
+			var rot = sin(self.delta * 10) * randf() * 4
 			return (input_motion.rotated(rot) * speed * 0.75) + (drunk_motion * DRUNK_MOTION_SPEED * delta * speed * 0.2)
 	
 	return Vector2()
@@ -137,7 +137,7 @@ func _gen_drunk_motion() -> void:
 			var rot = sin(self.delta * 75)
 			drunk_motion = Vector2(10 * rot, 0)
 		2:
-			drunk_motion = Vector2()
+			drunk_motion = Vector2(randf(), randf())
 		3, 4:
 			var b = 0
 			match drunk_level:
