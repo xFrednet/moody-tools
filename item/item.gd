@@ -58,8 +58,9 @@ func _input(event: InputEvent) -> void:
 		return
 	
 	if (mouse.get_button_index() == BUTTON_RIGHT && mouse.is_pressed()):
-		popup.set_position(get_global_mouse_position())
-		popup.popup()
+		if (get_parent() is Control):
+			popup.set_position(get_global_mouse_position())
+			popup.popup()
 
 func _mouse_entered() -> void:
 	mouse_inside = true
@@ -97,7 +98,7 @@ func _on_item_pressed(id) -> void:
 			# Backpack
 		2001:
 			backpack.remove_item(self)
-			backpack.drop_item(self)
+			backpack._drop_item(self)
 		_:
 			print("What do you want me to do, who are YOU")
 
