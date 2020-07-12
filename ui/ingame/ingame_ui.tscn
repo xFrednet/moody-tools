@@ -14,12 +14,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="label" type="Label" parent="."]
+[node name="left_label" type="Label" parent="."]
 margin_right = 40.0
 margin_bottom = 14.0
 text = "Moody Tools"
 
-[node name="Label" type="Label" parent="."]
+[node name="right_label" type="Label" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -31,7 +31,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="tool_background" type="ColorRect" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -132.0
