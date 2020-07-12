@@ -5,6 +5,10 @@ class_name Boots
 func _ready() -> void:
 	pass
 
+func _display_random_status(texts: Array) -> void:
+	var index = randi() % texts.size()
+	_display_status(texts[index])
+
 func _display_status(text: String) -> void:
 	GameData.ingame_menu.find_node("tool_status_display").find_node("boots").set_status(text)
 
@@ -27,3 +31,6 @@ func get_movement_request() -> Vector2:
 		velocity.y -= 1
 	
 	return velocity
+
+func update_mood_display() -> void:
+	GameData.ingame_menu.find_node("tool_status_display").find_node("boots").set_mood(mood)
