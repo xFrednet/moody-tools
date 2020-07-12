@@ -10,6 +10,8 @@ func _ready() -> void:
 	$equipment.set_boots(DunkBoots.new())
 	$equipment.set_backpack(HungryBackpack.new())
 	
+	$equipment.get_backpack().pickup_item(Item.new(ItemInfo.ALCOHOL_ID, 10))
+	
 	pass
 
 func _physics_process(delta: float) -> void:
