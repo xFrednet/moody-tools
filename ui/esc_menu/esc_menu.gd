@@ -17,6 +17,7 @@ func _process(delta: float) -> void:
 
 func continue_game():
 	set_visible(false)
+	set_size(Vector2(1,1))
 	get_tree().paused = false
 	emit_signal("continue_game")
 
@@ -25,7 +26,6 @@ func _on_continue_button_pressed() -> void:
 
 func _on_exit_button_pressed() -> void:
 	get_tree().quit()
-
-
+	
 func _on_exit_button_visibility_changed() -> void:
 	_was_paused_game_released = false

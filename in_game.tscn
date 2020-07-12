@@ -11,13 +11,16 @@ script = ExtResource( 4 )
 
 [node name="ui" type="CanvasLayer" parent="."]
 
-[node name="game_menu" parent="ui" instance=ExtResource( 2 )]
-size_flags_horizontal = 2
-size_flags_vertical = 2
-
 [node name="esc_menu" parent="ui" instance=ExtResource( 5 )]
 pause_mode = 2
 visible = false
+mouse_filter = 1
+
+[node name="game_menu" parent="ui" instance=ExtResource( 2 )]
+margin_top = -1.59424
+margin_bottom = -1.59424
+size_flags_horizontal = 2
+size_flags_vertical = 2
 
 [node name="world" parent="." instance=ExtResource( 1 )]
 

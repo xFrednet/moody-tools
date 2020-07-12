@@ -52,15 +52,15 @@ func _input(event: InputEvent) -> void:
 	if (local_pos.x < 0 || local_pos.x >= get_size().x ||
 			local_pos.y < 0 || local_pos.y >= get_size().y):
 				return
-	elif (!mouse_inside):
-		# Don't ask, don't touch, it works I don't have the time
-		mouse_inside = true
-		return
 	
 	if (mouse.get_button_index() == BUTTON_RIGHT && mouse.is_pressed()):
 		if (get_parent() is Control):
 			popup.set_position(get_global_mouse_position())
 			popup.popup()
+			
+	if (mouse.get_button_index() == BUTTON_LEFT && mouse.is_pressed()):
+		if (get_parent() is Node2D):
+			GameData.player.get_node("equipment").get_backpack().pickup_item(self)
 
 func _mouse_entered() -> void:
 	mouse_inside = true

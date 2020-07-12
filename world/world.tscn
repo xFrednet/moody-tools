@@ -261,8 +261,7 @@ __meta__ = {
 [node name="ItemSpawn" type="Node2D" parent="entities"]
 position = Vector2( 54.4278, 67.1721 )
 script = ExtResource( 6 )
-id = "i:wood"
-count = 100
+id = "i:apple"
 
 [node name="ItemSpawn2" type="Node2D" parent="entities"]
 position = Vector2( 409.836, 303.582 )
