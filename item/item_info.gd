@@ -7,6 +7,8 @@ const STONE_ID = "i:stone"
 const WATER_BOTTLE_ID = "i:water_bottle"
 const WINE_BOTTLE_ID = "i:wine_bottle"
 const WOOD_ID = "i:wood"
+const MUSHROOM_ID = "i:mushroom"
+const FISH_ID = "i:fish"
 
 const ITEM_NAMES = {
 	"i:alcohol": "Alcohol",
@@ -15,7 +17,9 @@ const ITEM_NAMES = {
 	"i:stone": "Stone",
 	"i:water_bottle": "Water_bottle",
 	"i:wine_bottle": "Wine_bottle",
-	"i:wood": "Wood"
+	"i:wood": "Wood",
+	"i:fish": "Fish",
+	"i:mushroom": "Mushroom"
 }
 
 var item_textures = {
@@ -25,7 +29,9 @@ var item_textures = {
 	"i:stone":			load("res://item/texture/stone.png"),
 	"i:water_bottle":	load("res://item/texture/water_bottle.png"),
 	"i:wine_bottle":	load("res://item/texture/wine_bottle.png"),
-	"i:wood":			load("res://item/texture/wood.png")
+	"i:wood":			load("res://item/texture/wood.png"),
+	"i:fish":			load("res://item/texture/fish.png"),
+	"i:mushroom":		load("res://item/texture/mushroom.png")
 }
 
 var null_texture = load("res://item/texture/null.png")

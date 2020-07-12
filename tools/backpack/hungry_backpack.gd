@@ -30,12 +30,30 @@ func _ready() -> void:
 
 func give_item_by_id(item_id: String):
 	match item_id:
-		"i:apple":
+		ItemInfo.APPLE_ID:
+			_display_status("An apple a day keeps my happy")
 			_change_mood(10.0)
 			_since_last_feed = 0.0
-		"i:meat":
+		ItemInfo.MEAT_ID:
+			_display_status("Uhh tasty meat, thank you sir!")
 			_change_mood(20.0)
 			_since_last_feed = 0.0
+		ItemInfo.WATER_BOTTLE_ID:
+			_display_status("It's just water -.-")
+			_change_mood(5.0)
+			_since_last_feed = 0.0
+		ItemInfo.FISH_ID:
+			_display_status("Uhh un fish, thank you, it will keep me fed")
+			_change_mood(15.0)
+			_since_last_feed = 0.0
+		ItemInfo.MUSHROOM_ID:
+			_display_status("I don't trust these shrooms, but I trust you :)\nIt was okay, but I prefer something different")
+			_change_mood(5.0)
+			_since_last_feed = 0.0
+		ItemInfo.WINE_BOTTLE_ID, ItemInfo.ALCOHOL_ID:
+			_display_status("Ohh, damn, nice. But I'm still hungry and the boots are angry, that I got the alcohol")
+			_change_mood(25.0)
+			GameData.player.get_node("equipment").get_boots()._change_mood(-30.0)
 		_:
 			_change_mood(-25.0 * randf())
 			_display_status("I can't eat that, do you want me to die???")
